@@ -1,0 +1,209 @@
+:root {
+    --fundo: #F2F8FE;
+    --texto: #0B1B2E;
+    --texto-2: #5B6B7F;
+    --destaque: #1E5BD8;
+    --borda: #DCE4EE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: var(--destaque);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+a:focus-visible {
+    outline: 3px solid var(--destaque);
+    outline-offset: 3px;
+}
+
+/* Navbar */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem 2rem;
+    padding: 0.75rem 5vw;
+    background: var(--fundo);
+    border-bottom: 1px solid var(--borda);
+}
+
+nav p {
+    font-weight: 700;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+nav a {
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--borda);
+    border-radius: 999px;
+}
+
+nav a:hover,
+footer a:hover {
+    background: var(--destaque);
+    border-color: var(--destaque);
+    color: #fff;
+}
+
+/* Banner */
+#banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 70px);
+    padding: 2rem 1rem;
+    background: linear-gradient(rgba(242, 248, 254, 0.55), rgba(242, 248, 254, 0.55)), url('assets/Felix2.jpeg') center / cover;
+}
+
+h1 {
+    font-size: clamp(2rem, 7vw, 4rem);
+    line-height: 1.1;
+}
+
+#banner p {
+    font-size: clamp(1.1rem, 3.5vw, 2rem);
+    font-weight: 700;
+}
+
+/* Seções */
+section:not(#banner) {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: clamp(2rem, 6vw, 4rem) 1rem;
+    border-bottom: 1px solid var(--borda);
+    scroll-margin-top: 70px;
+}
+
+h2 {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    margin-bottom: 1.5rem;
+}
+
+/* Cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.cards li {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    padding: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cards li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(11, 27, 46, 0.08);
+}
+
+.cards img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.cards p {
+    margin-top: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* Curiosidades */
+#curiosidades ul {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#curiosidades li {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    padding: 0.9rem 1.25rem;
+}
+
+/* Rodapé */
+footer {
+    padding: 2rem 1rem 3rem;
+}
+
+footer a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--destaque);
+    border: 1px solid var(--destaque);
+    border-radius: 999px;
+    color: #fff;
+}
+
+footer a:hover {
+    opacity: 0.85;
+}
+
+@media (max-width: 767px) {
+    nav {
+        flex-direction: column;
+    }
+
+    .cards {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1rem;
+    }
+
+    .cards li {
+        flex: 0 0 80%;
+        scroll-snap-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
